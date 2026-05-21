@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat App</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="chat-container">
+
+    <div class="chat-header">
+        Chat Application
+    </div>
+
+    <div class="chat-messages" id="messages"></div>
+
+    <div class="chat-input">
+        <input type="text" id="username" placeholder="Username">
+
+        <input type="text" id="message" placeholder="Message">
+
+        <button onclick="sendMessage()">Send</button>
+    </div>
+
+</div>
+
+<script>
+
+const messagesDiv = document.getElementById("messages");
+
+async function loadMessages() {
+
+    const response = await fetch("history.php");
+
+    const data = await response.json();
+
+    messagesDiv.innerHTML = "";
+
+    data.forEach(msg => {
+
+        messagesDiv.innerHTML += `
+            <div class="message">
+                <strong>${msg.username}</strong><br>
+                ${msg.message}
+                <div class="time">${msg.sent_at}</div>
+            </div>
+        `;
+    });
+}
+
+async function sendMessage() {
+
+    const username = document.getElementById("username").value;
+
+    const message = document.getElementById("message").value;
+
+    if (username === "" || message === "") {
+        return;
+    }
+
+    await fetch("save.php", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            username: username,
+            message: message
+        })
+    });
+
+    document.getElementById("message").value = "";
+
+    loadMessages();
+}
+
+loadMessages();
+
+</script>
+
+</body>
+</html>
