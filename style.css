@@ -1,0 +1,150 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #eef5fb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #333;
+}
+
+.chat-container {
+    width: 100%;
+    max-width: 500px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 50, 100, 0.1);
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+    overflow: hidden;
+}
+
+.chat-header {
+    background-color: #0056b3;
+    color: #ffffff;
+    padding: 15px 20px;
+    text-align: center;
+    font-weight: bold;
+    border-bottom: 1px solid #004494;
+}
+.chat-history {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background-color: #f8fbff;
+}
+
+.message {
+    max-width: 75%;
+    display: flex;
+    flex-direction: column;
+}
+.message.other {
+    align-self: flex-start;
+}
+
+.message.self {
+    align-self: flex-end;
+    align-items: flex-end;
+}
+
+.message-info {
+    font-size: 0.8em;
+    color: #777;
+    margin-bottom: 4px;
+    display: flex;
+    gap: 8px;
+}
+
+.message.self .message-info {
+    color: #5c8ab9;
+}
+
+.text {
+    padding: 10px 15px;
+    border-radius: 15px;
+    font-size: 0.95em;
+    line-height: 1.4;
+    word-wrap: break-word;
+}
+.message.other .text {
+    background-color: #e9ecef;
+    color: #333;
+    border-top-left-radius: 2px;
+}
+
+/* Dizajn tvojih oblačića */
+.message.self .text {
+    background-color: #007bff;
+    color: white;
+    border-top-right-radius: 2px;
+}
+
+.chat-controls {
+    padding: 15px;
+    background-color: #ffffff;
+    border-top: 1px solid #dce8f2;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* Polja za unos */
+#username, #message {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+#username {
+    flex: 1;
+    min-width: 100px;
+}
+
+#message {
+    flex: 3;
+    min-width: 200px;
+}
+
+#username:focus, #message:focus {
+    border-color: #007bff;
+}
+
+/* Dugme za slanje */
+#send-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+#send-btn:hover {
+    background-color: #0056b3;
+}
+
+#send-btn:active {
+    transform: scale(0.98);
+}
+.chat-history::-webkit-scrollbar {
+    width: 6px;
+}
+.chat-history::-webkit-scrollbar-thumb {
+    background-color: #b0c4de;
+    border-radius: 3px;
+}

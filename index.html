@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Chat App</title>
+</head>
+<body>
+<div class="chat-container">
+    <header class="chat-header">
+        <h2>Chat Aplikacija</h2>
+    </header>
+
+    <main class="chat-history" id="chat-history">
+
+        <div class="message other">
+            <div class="message-info">
+                <span class="username">Petar</span>
+                <span class="time">14:02</span> </div>
+            <div class="text">Zdravo! Kako napreduje zadatak?</div>
+        </div>
+
+        <div class="message self">
+            <div class="message-info">
+                <span class="username">Ti</span>
+                <span class="time">14:05</span>
+            </div>
+            <div class="text">Evo, radim CSS dizajn. Odlično izgleda!</div>
+        </div>
+
+    </main>
+
+    <footer class="chat-controls">
+        <input type="text" id="username" placeholder="Tvoje ime..." required>
+        <input type="text" id="message" placeholder="Unesi poruku..." required>
+        <button id="send-btn">Pošalji</button>
+    </footer>
+</div>
+</body>
+</html>
